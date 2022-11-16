@@ -1,5 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="6dp"
+    android:elevation="6dp"
+    app:cardUseCompatPadding="true">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recyclerview">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="160dp"
+            android:layout_height="215dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/visitor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/visitor_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visitor_name"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visitor_name" />
+
+        <TextView
+            android:id="@+id/visitor_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visitor_ic"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visitor_ic" />
+
+        <TextView
+            android:id="@+id/visit_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visitor_phone"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visitor_phone" />
+
+        <TextView
+            android:id="@+id/visit_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visit_date"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visit_date" />
+
+        <TextView
+            android:id="@+id/visit_exit_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visit_time"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visit_time" />
+
+        <TextView
+            android:id="@+id/visitor_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visit_exit_time"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visit_exit_time" />
+
+        <TextView
+            android:id="@+id/visitor_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visitor_status"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img1"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visitor_status" />
+
+        <TextView
+            android:id="@+id/labelReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visitor_ticket"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Visit Reason: "
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visitor_ticket" />
+
+        <TextView
+            android:id="@+id/visit_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelReason"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelReason" />
+
+        <TextView
+            android:id="@+id/labelsReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visit_reason"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="6dp"
+            android:text="Status Reason: "
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visit_reason" />
+
+        <TextView
+            android:id="@+id/status_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelsReason"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/visit_reason" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status_reason"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReject"
+                android:layout_width="190dp"
+                android:layout_height="46dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/rounded_button"
+                android:text="Reject"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btnApprove"
+                android:layout_width="190dp"
+                android:layout_height="46dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/rounded_button"
+                android:text="Approve"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
