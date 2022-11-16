@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "941205447238",
+    "firebase_url": "https://dbacms-36021-default-rtdb.firebaseio.com",
+    "project_id": "dbacms-36021",
+    "storage_bucket": "dbacms-36021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941205447238:android:258785edbf384ac6be6047",
+        "android_client_info": {
+          "package_name": "com.example.acms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941205447238-64hd31plafkeqtv2bfgaqfq4l5f05nlt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.acms",
+            "certificate_hash": "1848520e51094af41d0cbfcbc57b8dbebb5696bd"
+          }
+        },
+        {
+          "client_id": "941205447238-46vec2j41ia1v3nqp252195fijbvnmup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7PbJVQw-JE80IVDxcPlAHvpt9hC8dLmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941205447238-46vec2j41ia1v3nqp252195fijbvnmup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
