@@ -24,6 +24,7 @@ public class ActivityOfficerRejected extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //retrieving the database user data using the same Adapter with Admin Approved List
         FirebaseRecyclerOptions<Model> options =
                 new FirebaseRecyclerOptions.Builder<Model>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Users")
@@ -34,6 +35,7 @@ public class ActivityOfficerRejected extends AppCompatActivity {
         recyclerView.setAdapter(mainAdapterOfficerApproved);
     }
 
+    //on start and on stop for the retriever user data
     @Override
     protected void onStart() {
         super.onStart();
@@ -43,6 +45,8 @@ public class ActivityOfficerRejected extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+
+        //here, even if its onStop we put ".startListening", because we want keep the user data even the app goes background
         mainAdapterOfficerApproved.startListening();
     }
 }

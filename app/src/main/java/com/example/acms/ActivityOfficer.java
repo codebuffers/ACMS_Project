@@ -14,6 +14,10 @@ public class ActivityOfficer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officer);
 
+
+        //officer director activity
+
+        //below btn starts pending visitors activity
         Button btn = (Button)findViewById(R.id.goPending);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,6 +26,8 @@ public class ActivityOfficer extends AppCompatActivity {
             }
         });
 
+
+        //below btn starts rejected visitors activity
         Button btn2 = (Button)findViewById(R.id.goRejected);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override

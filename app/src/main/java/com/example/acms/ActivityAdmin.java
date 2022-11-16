@@ -31,11 +31,13 @@ import java.io.IOException;
 
 public class ActivityAdmin extends AppCompatActivity {
 
+    //calling the views
     private Button buttonGnrt;
     private Bitmap bitmap;
     RecyclerView recyclerView;
     LinearLayout lineard;
 
+    //calling the officer approved adapter
     MainAdapterOfficerApproved mainAdapterOfficerApproved;
 
     @SuppressLint("MissingInflatedId")
@@ -44,12 +46,13 @@ public class ActivityAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        //finding the ids for required views
         buttonGnrt = findViewById(R.id.btnGnrtPDF);
-
         lineard = findViewById(R.id.lineard);
         recyclerView = (RecyclerView)findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //retrieving the database user data using the same Adapter with Officer Rejected List
         FirebaseRecyclerOptions<Model> options =
                 new FirebaseRecyclerOptions.Builder<Model>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Users")
@@ -59,17 +62,22 @@ public class ActivityAdmin extends AppCompatActivity {
         mainAdapterOfficerApproved = new MainAdapterOfficerApproved(options);
         recyclerView.setAdapter(mainAdapterOfficerApproved);
 
+        //button generate pdf starts here by using bitmap and createReportPDF function
         buttonGnrt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("size", "" +lineard.getWidth() + " " + lineard.getWidth());
+
+                //calling LoadBitmap function
                 bitmap = LoadBitmap(lineard, lineard.getWidth(), lineard.getHeight());
+                //calling the createReportPDF function
                 createReportPDF();
             }
         });
 
     }
 
+    //getting the screen dimensions for bitmap
     private Bitmap LoadBitmap(View v, int width, int height) {
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -77,6 +85,8 @@ public class ActivityAdmin extends AppCompatActivity {
         return bitmap;
     }
 
+
+    //main pdf creator from the screen(WINDOW) starts here
     private void createReportPDF() {
         WindowManager windowManager = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -113,7 +123,9 @@ public class ActivityAdmin extends AppCompatActivity {
         }
 
     }
+    //main pdf creator from the screen(WINDOW) ends here
 
+    //if the pdf generate succes, open pdf...
     private void openPdf() {
         File file = new File("/sdcard/accessreport.pdf");
         if (file.exists()) {
@@ -130,6 +142,8 @@ public class ActivityAdmin extends AppCompatActivity {
         }
     }
 
+
+    //on start and on stop for the retriever user data
     @Override
     protected void onStart() {
         super.onStart();
@@ -139,6 +153,8 @@ public class ActivityAdmin extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+
+        //here, even if its onStop we put ".startListening", because we want keep the user data even the app goes background
         mainAdapterOfficerApproved.startListening();
     }
 }

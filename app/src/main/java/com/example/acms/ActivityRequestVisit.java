@@ -44,6 +44,7 @@ import java.util.TimeZone;
 
 public class ActivityRequestVisit extends AppCompatActivity {
 
+    //calling the views
     private Button SubmitRequestBtn;
     Button btnGenerateTicket;
     private ImageView imageView;
@@ -59,11 +60,14 @@ public class ActivityRequestVisit extends AppCompatActivity {
     TextView VisitorTicket;
 
 
+    //calling the db(firebase realtime database)
     private DatabaseReference root = FirebaseDatabase.getInstance().getReferenceFromUrl("https://dbacms-36021-default-rtdb.firebaseio.com");
     private StorageReference reference = FirebaseStorage.getInstance().getReference();
 
+    //image uri to get img after its stored in db storage(firebase storage)
     private Uri imageUri;
 
+    //calling datepicker...
     DatePickerDialog pickerDate;
 
     @SuppressLint("MissingInflatedId")
@@ -72,6 +76,7 @@ public class ActivityRequestVisit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_visit);
 
+        //finding the ids for all used values/variables...
         SubmitRequestBtn = findViewById(R.id.SubmitRequestBtnId);
         progressBar = findViewById(R.id.progressBar);
         imageView = findViewById(R.id.VisitorImageId);
@@ -90,6 +95,7 @@ public class ActivityRequestVisit extends AppCompatActivity {
 
         Toast.makeText(ActivityRequestVisit.this, "Send your Request Visit", Toast.LENGTH_LONG).show();
 
+        //image picker from user(visitor) starts here
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,10 +105,12 @@ public class ActivityRequestVisit extends AppCompatActivity {
                 startActivityForResult(galleryIntent, 2);
             }
         });
+        //image picker from user(visitor) ends here
+
 
         //date n time picker starts here
 
-        //date picker
+        //date picker below...
         VisitDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,22 +133,24 @@ public class ActivityRequestVisit extends AppCompatActivity {
             }
         });
 
-        //time pickers
+        //time picker below...
         VisitTime.setOnClickListener(new View.OnClickListener() {
             int chosenHour;
             int chosenMinute;
-
             int chosenHourEx;
             @Override
             public void onClick(View view) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         ActivityRequestVisit.this,
+
+                        //this time picker suppose to be Holo if one of Latest API/Android Studio SDK used...
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                                 chosenHour = hourOfDay;
 
+                                //adding the hours to enter time in the background...
                                 chosenHourEx = hourOfDay+8;
 
                                 chosenMinute = minute;
@@ -172,9 +182,6 @@ public class ActivityRequestVisit extends AppCompatActivity {
                 timePickerDialog.show();
             }
         });
-
-
-        //exit time
 
         //date n time pickers end here
 
@@ -212,6 +219,8 @@ public class ActivityRequestVisit extends AppCompatActivity {
         });
     }
 
+
+    //uploading the visitor data starts here...
     private void uploadToFirebase(Uri imageUri) {
         final StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -223,6 +232,7 @@ public class ActivityRequestVisit extends AppCompatActivity {
 
                         progressBar.setVisibility(View.INVISIBLE);
 
+                        //filling the fields and check if empty...
                         if (TextUtils.isEmpty(VisitorName.getText().toString())) {
                             Toast.makeText(ActivityRequestVisit.this,"Please enter your name", Toast.LENGTH_LONG).show();
                             VisitorName.setError("Name is required!");
@@ -258,6 +268,7 @@ public class ActivityRequestVisit extends AppCompatActivity {
                         }
                         else {
 
+                            //if not empty start to upload to db...
                             String ticket = VisitorTicket.getText().toString();
                             String name = VisitorName.getText().toString();
                             String ic = VisitorIC.getText().toString();
@@ -269,11 +280,14 @@ public class ActivityRequestVisit extends AppCompatActivity {
                             String reason = VisitReason.getText().toString();
                             String statusreason = "Pending Security Officer Review";
 
+
+                            //main uploading process starting here... but first image uploading to storage functions are below..
                             root.child("Users").child("Visitors").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                     if (snapshot.hasChild(ticket)) {
+                                        //check if ticket num is not duplicated...
                                         Toast.makeText(ActivityRequestVisit.this, "Please re-generate a new ticket number!", Toast.LENGTH_SHORT).show();
                                     } else {
                                         //sending data to firebase realtime db
@@ -319,14 +333,17 @@ public class ActivityRequestVisit extends AppCompatActivity {
         });
     }
 
+    //uploading the visitor data endss here...
 
 
+    //upload image to storage..and pass the uri to overall user data uploader...
     private String getFileExtension(Uri imageUri) {
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(imageUri));
     }
 
+    //upload image to storage..and pass the uri to overall user data uploader...
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);

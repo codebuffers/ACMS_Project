@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivityOfficerPending extends AppCompatActivity {
 
+    //calling the recyclerView and adapter
     RecyclerView recyclerView;
     MainAdapterOfficer mainAdapterOfficer;
 
@@ -21,9 +22,11 @@ public class ActivityOfficerPending extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officer_pending);
 
+        //finding the ids for layout
         recyclerView = (RecyclerView)findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //retrieving the database user data
         FirebaseRecyclerOptions<Model> options =
                 new FirebaseRecyclerOptions.Builder<Model>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Users")
@@ -34,6 +37,7 @@ public class ActivityOfficerPending extends AppCompatActivity {
         recyclerView.setAdapter(mainAdapterOfficer);
     }
 
+    //on start and on stop for the retriever user data
     @Override
     protected void onStart() {
         super.onStart();
@@ -43,6 +47,8 @@ public class ActivityOfficerPending extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+
+        //here, even if its onStop we put ".startListening", because we want keep the user data even the app goes background
         mainAdapterOfficer.startListening();
     }
 }

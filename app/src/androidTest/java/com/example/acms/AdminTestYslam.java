@@ -2,7 +2,6 @@ package com.example.acms;
 
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -32,17 +31,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-// automated espresso test which check that Guard can login and see the list of approved visits
+// automated espresso test to verify admin can be logged in using correct superID, if ActivityAdmin appears test is passed
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class testGuard {
+public class AdminTestYslam {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void testGuard() {
+    public void adminTestYslam() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -72,12 +72,12 @@ public class testGuard {
         }
 
         ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.goGuardLogin), withText("Login Guard "),
+                allOf(withId(R.id.goAdminLogin), withText("Login Admin"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                4),
+                                0),
                         isDisplayed()));
         materialButton2.perform(click());
 
@@ -91,24 +91,13 @@ public class testGuard {
         }
 
         ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.GuardSuperIDId),
+                allOf(withId(R.id.AdminSuperIDId),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
                                         0),
                                 3)));
-        appCompatEditText.perform(scrollTo(), click());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.GuardSuperIDId),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                3)));
-        appCompatEditText2.perform(scrollTo(), replaceText("0011guard"), closeSoftKeyboard());
-
-        pressBack();
+        appCompatEditText.perform(scrollTo(), replaceText("0011admin"), closeSoftKeyboard());
 
         ViewInteraction materialButton3 = onView(
                 allOf(withId(R.id.LoginBtnId), withText("Login"),
@@ -128,31 +117,11 @@ public class testGuard {
             e.printStackTrace();
         }
 
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.btnDTU), withText("Did not turn up"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.RelativeLayout")),
-                                        13),
-                                0),
+        ViewInteraction button = onView(
+                allOf(withId(R.id.btnGnrtPDF), withText("GENERATE PDF"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        materialButton4.perform(click());
-
-        ViewInteraction materialButton5 = onView(
-                allOf(withId(R.id.btnConfirmNoShow), withText("Confirm No Show"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(com.orhanobut.dialogplus.R.id.dialogplus_view_container),
-                                        0),
-                                2),
-                        isDisplayed()));
-        materialButton5.perform(click());
-
-        ViewInteraction viewGroup = onView(
-                allOf(withParent(allOf(withId(android.R.id.content),
-                                withParent(withId(androidx.constraintlayout.widget.R.id.decor_content_parent)))),
-                        isDisplayed()));
-        viewGroup.check(matches(isDisplayed()));
+        button.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(

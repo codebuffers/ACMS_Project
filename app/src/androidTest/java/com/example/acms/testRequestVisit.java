@@ -33,6 +33,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+// automated espresso test to clarify if the requested application can be filled up and sent for processing
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class testRequestVisit {

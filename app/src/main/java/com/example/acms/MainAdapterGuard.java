@@ -25,6 +25,8 @@ import com.orhanobut.dialogplus.ViewHolder;
 import java.util.HashMap;
 import java.util.Map;
 
+
+//different adapter for guard due to different button function
 public class MainAdapterGuard extends FirebaseRecyclerAdapter<Model, MainAdapterGuard.myViewHolder> {
 
     /**
@@ -57,6 +59,7 @@ public class MainAdapterGuard extends FirebaseRecyclerAdapter<Model, MainAdapter
                 .into(holder.img);
 
 
+        //visitor put did not show function below
         holder.btnNoShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

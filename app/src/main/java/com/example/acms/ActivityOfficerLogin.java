@@ -20,8 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ActivityOfficerLogin extends AppCompatActivity {
 
+    //this activity using the binding layout method...
     ActivityOfficerLoginBinding binding;
     ProgressBar progressBar;
+
+    //db reference
     DatabaseReference root;
 
     @Override
@@ -31,6 +34,8 @@ public class ActivityOfficerLogin extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.progressBar.setVisibility(View.INVISIBLE);
 
+
+        //login btn which calling the loadAccount function below...
         binding.LoginBtnId.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String OfficerSupID = binding.OfficerSuperIDId.getText().toString();
@@ -57,6 +62,8 @@ public class ActivityOfficerLogin extends AppCompatActivity {
 
     }
 
+
+    //loading the specific account according to the staff role that is in db...
     private void loadAccount(String OfficerSupID) {
 
         root = FirebaseDatabase.getInstance().getReference("Users").child("wStaff");

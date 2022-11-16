@@ -20,6 +20,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
+// junit local tests with high speed execution
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class unitTest {
@@ -27,6 +30,7 @@ public class unitTest {
     public ActivityScenarioRule<ActivityRequestVisit> activityRule =
             new ActivityScenarioRule<ActivityRequestVisit>(ActivityRequestVisit.class);
 
+    // junit local test to check whether text view can proceed input
 
     @Test
     public void inputSupport() {
@@ -34,6 +38,7 @@ public class unitTest {
         onView(withClassName(endsWith("Name")));
     }
 
+    // junit local test to check whether "generate ticket" button in ActivityRequestVisit is clickable
     @Test
     public void requestTests()
     {

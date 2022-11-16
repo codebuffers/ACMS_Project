@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+//different adapter for officer&admin due to no button function
 public class MainAdapterOfficerApproved extends FirebaseRecyclerAdapter<Model, MainAdapterOfficerApproved.myViewHolder> {
 
     /**

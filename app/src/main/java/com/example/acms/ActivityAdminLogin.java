@@ -20,8 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ActivityAdminLogin extends AppCompatActivity {
 
+    //this activity using the binding layout method...
     ActivityAdminLoginBinding binding;
     ProgressBar progressBar;
+
+    //db reference
     DatabaseReference root;
 
     @Override
@@ -31,6 +34,8 @@ public class ActivityAdminLogin extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.progressBar.setVisibility(View.INVISIBLE);
 
+
+        //login btn which calling the loadAccount function below...
         binding.LoginBtnId.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String AdminSupID = binding.AdminSuperIDId.getText().toString();
@@ -57,8 +62,9 @@ public class ActivityAdminLogin extends AppCompatActivity {
 
     }
 
-    private void loadAccount(String AdminSupID) {
 
+    //loading the specific account according to the staff role that is in db...
+    private void loadAccount(String AdminSupID) {
         root = FirebaseDatabase.getInstance().getReference("Users").child("wStaff");
         root.child(AdminSupID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

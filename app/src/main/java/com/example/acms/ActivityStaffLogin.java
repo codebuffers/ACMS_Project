@@ -14,6 +14,9 @@ public class ActivityStaffLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_login);
 
+
+        //buttons that directing to each staff login pages...
+
         Button btn = (Button)findViewById(R.id.goAdminLogin);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,6 +31,7 @@ public class ActivityCheckStatus extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.progressBar.setVisibility(View.INVISIBLE);
 
+        //onclick listener for button to call the visitor status getter function...
         binding.CheckStatusBtnId.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String VisitorTicket = binding.VisitorTicketId.getText().toString();
@@ -40,6 +41,8 @@ public class ActivityCheckStatus extends AppCompatActivity {
                     loadStatus(VisitorTicket);
 
                 } else {
+
+                    //in case invalid ticket num key in...
                     binding.progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(ActivityCheckStatus.this, "Please enter your saved ticket!", Toast.LENGTH_SHORT).show();
                 }
@@ -57,6 +60,8 @@ public class ActivityCheckStatus extends AppCompatActivity {
 
     }
 
+
+    //loading the visitor status from db according to the ticket number...
     private void loadStatus(String VisitorTicket) {
         root = FirebaseDatabase.getInstance().getReference("Users");
         root.child("Visitors").child(VisitorTicket).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -64,6 +69,8 @@ public class ActivityCheckStatus extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
+
+                        //if the entered ticket is exist in db...
                         Toast.makeText(ActivityCheckStatus.this, "Status Loaded Successfully", Toast.LENGTH_SHORT).show();
                         DataSnapshot dataSnapshot = task.getResult();
                         String VisitorName = String.valueOf(dataSnapshot.child("visitorname").getValue());
@@ -75,10 +82,13 @@ public class ActivityCheckStatus extends AppCompatActivity {
                         binding.progressBar.setVisibility(View.INVISIBLE);
                     }
                     else  {
+
+                        //if the entered ticket is not exist in db...
                         binding.progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(ActivityCheckStatus.this, "Not a valid request visit ticket!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    //if the entered ticket is not exist or error in db...
                     binding.progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(ActivityCheckStatus.this, "Failed to load visit request status!", Toast.LENGTH_SHORT).show();
                 }

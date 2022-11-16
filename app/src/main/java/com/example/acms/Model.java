@@ -1,5 +1,7 @@
 package com.example.acms;
 
+
+//this is the MAIN Model class which is used by all the adaters to retrieve user(visitor) data
 public class Model {
 
     private String visitorimage;
@@ -18,6 +20,7 @@ public class Model {
 
     }
 
+    //constructor below
     public Model(String visitorimage, String visitorname,
                  String visitoric, String visitorphone,
                  String visitdate, String visittime, String visitexittime,
@@ -36,6 +39,8 @@ public class Model {
         this.statusreason = statusreason;
     }
 
+
+    //getters & setters below
     public String getVisitorimage() {
         return visitorimage;
     }

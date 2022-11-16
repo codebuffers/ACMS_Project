@@ -26,6 +26,8 @@ import com.orhanobut.dialogplus.ViewHolder;
 import java.util.HashMap;
 import java.util.Map;
 
+
+//this is the main adapter for Officer...
 public class MainAdapterOfficer extends FirebaseRecyclerAdapter<Model, MainAdapterOfficer.myViewHolder> {
 
     /**
@@ -40,6 +42,8 @@ public class MainAdapterOfficer extends FirebaseRecyclerAdapter<Model, MainAdapt
 
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull Model model) {
+
+        //holders for retrieving user data
         holder.name.setText(model.getVisitorname());
         holder.ic.setText("IC: "+model.getVisitoric());
         holder.phone.setText("Phone: "+model.getVisitorphone());
@@ -51,12 +55,14 @@ public class MainAdapterOfficer extends FirebaseRecyclerAdapter<Model, MainAdapt
         holder.reason.setText(model.getVisitreason());
         holder.sreason.setText(model.getStatusreason());
 
+        //glide to hold the user image...
         Glide.with(holder.img.getContext())
                 .load(model.getVisitorimage())
                 .placeholder(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark)
                 .error(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark_normal)
                 .into(holder.img);
 
+        //visitor reject function below
         holder.btnReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +113,7 @@ public class MainAdapterOfficer extends FirebaseRecyclerAdapter<Model, MainAdapt
         });
 
 
+        //visitor approve function below
         holder.btnApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,17 +122,12 @@ public class MainAdapterOfficer extends FirebaseRecyclerAdapter<Model, MainAdapt
                         .setExpanded(true, 480)
                         .create();
 
-                //dialogPlus.show();
-
                 View v = dialogPlus.getHolderView();
 
                 String sreason = "Valid to visit";
                 String statusA = "Approved";
 
                 Button btnConfirmApprove = v.findViewById(R.id.btnConfirmApprove);
-
-                //sreason.setText(model.getStatusreason());
-                //status.setText(model.getVisitorstatus());
 
                 dialogPlus.show();
 
