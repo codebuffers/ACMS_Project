@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ACMS</string>
+    <string name="requestVisit">Request Visit</string>
+    <string name="checkStatus">Check Status</string>
+    <string name="staffLogin">Staff Login</string>
+    <string name="SubmitRequestVisit">Send Request</string>
+    <string name="GenerateTicket">Generate Ticket</string>
+    <string name="ticketLabel">Your Ticket (Please Copy&amp;Save Your Ticket):</string>
+    <string name="ticketLabel2">Please Enter Your Ticket Number:</string>
+    <string name="CheckStatusBtn">Check Status</string>
+    <string name="BackToMainBtn">Main Menu</string>
+    <string name="StatusLabel">Your Visit Request Status Result:</string>
+    <string name="loginLabel">Enter Staffname and Password:</string>
+    <string name="LoginBtn">Login</string>
+
+    <string name="AdminSuperIDLabel">Please Enter Your Admin Super ID:</string>
+    <string name="OfficerSuperIDLabel">Please Enter Your Officer Super ID:</string>
+    <string name="GuardSuperIDLabel">Please Enter Your Guard Super ID:</string>
+
+    <string-array name="Status">
+        <item>Pending</item>
+        <item>Rejected</item>
+        <item>did not turn up</item>
+    </string-array>
+
+</resources>

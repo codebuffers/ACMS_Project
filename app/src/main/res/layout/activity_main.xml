@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/requestVisit"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="@string/requestVisit"
+        android:background="@drawable/rounded_button"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/checkStatus"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="@string/checkStatus"
+        android:background="@drawable/rounded_button"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/staffLogin"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="@string/staffLogin"
+        android:background="@drawable/rounded_button"
+        />
+
+</LinearLayout>
