@@ -8,5 +8,40 @@
     android:orientation="vertical">
 
 
+    <Button
+        android:id="@+id/goAdminLogin"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Login Admin"
+        android:background="@drawable/rounded_button"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/goOfficerLogin"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Login Officer"
+        android:background="@drawable/rounded_button"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/goGuardLogin"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Login Guard "
+        android:background="@drawable/rounded_button"
+        />
 
 </LinearLayout>
